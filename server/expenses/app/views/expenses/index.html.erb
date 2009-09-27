@@ -1,0 +1,22 @@
+<h1>Listing expenses</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+  </tr>
+
+<% @expenses.each do |expense| %>
+  <tr>
+    <td><%=h expense.name %></td>
+    <td><%=h expense.amount %></td>
+    <td><%= link_to 'Show', expense %></td>
+    <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+    <td><%= link_to 'Destroy', expense, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New expense', new_expense_path %>

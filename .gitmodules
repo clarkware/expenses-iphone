@@ -1,0 +1,6 @@
+[submodule "client/Expenses/Classes/objectiveresource"]
+	path = client/Expenses/Classes/objectiveresource
+	url = git://github.com/yfactorial/objectiveresource.git
+[submodule "client/Expenses/Classes/objectivesupport"]
+	path = client/Expenses/Classes/objectivesupport
+	url = git://github.com/yfactorial/objectivesupport.git
