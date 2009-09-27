@@ -378,7 +378,8 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
+			path = ..;
+			sourceTree = SDKROOT;
 		};
 /* End PBXGroup section */
 
@@ -490,6 +491,7 @@
 				GCC_PREFIX_HEADER = Expenses_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Expenses;
+				SDKROOT = iphonesimulator3.1;
 			};
 			name = Debug;
 		};
@@ -502,6 +504,7 @@
 				GCC_PREFIX_HEADER = Expenses_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Expenses;
+				SDKROOT = iphoneos3.1;
 			};
 			name = Release;
 		};
@@ -515,7 +518,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphonesimulator3.1;
 			};
 			name = Debug;
 		};
@@ -528,7 +531,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphonesimulator3.1;
 			};
 			name = Release;
 		};
