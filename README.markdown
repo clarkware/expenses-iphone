@@ -29,7 +29,7 @@ Why?
 This application is intended as a demonstration of how to use
 [ObjectiveResource](http://iphoneonrails.com/) to manage a single resource
 living in a Rails application. I first created this application as one of the
-examples used in my [360|iDev talk](http://www.360idev.com) in October 2009.
+examples used in my [360iDev presentation](http://s3.amazonaws.com/pragmaticstudio/iPhoneOnRails.pdf) in October 2009.
 
 Oh, and because programming is fun.  :-)
 
