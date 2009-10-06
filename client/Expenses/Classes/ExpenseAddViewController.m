@@ -5,7 +5,6 @@
 - (UIBarButtonItem *)newCancelButton;
 - (UIBarButtonItem *)newSaveButton;
 - (UITextField *)newTextField;
-- (void)showAlert:(NSString *)message;
 @end
 
 @implementation ExpenseAddViewController
@@ -52,8 +51,10 @@
 
 	if (expense.expenseId) {
 		self.title = @"Edit Expense";
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         self.title = @"New Expense";
+        self.navigationItem.rightBarButtonItem.enabled = NO;
 	}
 }
 
@@ -75,11 +76,6 @@
 }
 
 - (IBAction)save {
-    if (([nameField.text length] == 0) || ([amountField.text length] == 0)) {
-        [self showAlert:@"Please enter a name and an amount."];
-        return;
-    }
-    
     expense.name = nameField.text;
     expense.amount = amountField.text;
     
@@ -124,23 +120,27 @@
     return YES; 
 } 
 
+- (IBAction)textFieldChanged:(id)sender {
+    BOOL enableSaveButton = 
+        ([self.nameField.text length] > 0) && ([self.amountField.text length] > 0);
+    [self.navigationItem.rightBarButtonItem setEnabled:enableSaveButton];
+}
+
 #pragma mark - 
 #pragma mark Private methods
 
 - (UIBarButtonItem *)newCancelButton {
     return [[UIBarButtonItem alloc] 
-            initWithTitle:@"Cancel" 
-                    style:UIBarButtonSystemItemCancel 
-                   target:self 
-                   action:@selector(cancel)];
+            initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+            target:self 
+            action:@selector(cancel)];    
 }
 
 - (UIBarButtonItem *)newSaveButton {
-    return [[UIBarButtonItem alloc]
-            initWithTitle:@"Save" 
-                    style:UIBarButtonSystemItemSave
-                   target:self 
-                   action:@selector(save)];
+    return [[UIBarButtonItem alloc] 
+            initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+            target:self 
+            action:@selector(save)];    
 }
 
 - (UITextField *)newTextField {
@@ -149,17 +149,10 @@
     textField.font = [UIFont systemFontOfSize:16];
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
+    [textField addTarget:self 
+                  action:@selector(textFieldChanged:) 
+        forControlEvents:UIControlEventEditingChanged];
     return textField;
 }  
 
-- (void)showAlert:(NSString *)message {
-	UIAlertView *alertView = 
-        [[UIAlertView alloc] initWithTitle:@"Whoops" 
-                                   message:message
-                                  delegate:nil 
-                         cancelButtonTitle:@"OK" 
-                         otherButtonTitles:nil];
-    [alertView show];
-	[alertView release];
-}
 @end
